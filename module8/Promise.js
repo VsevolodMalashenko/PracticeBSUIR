@@ -19,7 +19,7 @@ function fetchMultipleUrls(urls) {
 }
 
 const urls = [
-  'https://example.com',
+  'https://jsonplaceholder.typicode.com/todos/1',
 ];
 
 fetchMultipleUrls(urls)
