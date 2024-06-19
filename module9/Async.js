@@ -10,8 +10,6 @@ async function fetchDataFromFirstServer(url) {
         console.error('Ошибка:', error);
     }
 }
-
-// Функция для отправки данных на второй сервер
 async function fetchDataFromSecondServer(url, payload) {
     try {
         let response = await fetch(url, {
@@ -30,25 +28,18 @@ async function fetchDataFromSecondServer(url, payload) {
         console.error('Ошибка:', error);
     }
 }
-
-// Основная асинхронная функция
 async function main() {
-    const firstServerUrl = 'https://jsonplaceholder.typicode.com/posts/1';  // URL первого сервера
-    const secondServerUrl = 'https://jsonplaceholder.typicode.com/posts';  // URL второго сервера
+    const firstServerUrl = 'https://jsonplaceholder.typicode.com/posts/1'; 
+    const secondServerUrl = 'https://jsonplaceholder.typicode.com/posts';  
 
     try {
-        // Получаем данные с первого сервера
         let firstData = await fetchDataFromFirstServer(firstServerUrl);
 
         if (!firstData) {
             throw new Error('Не удалось получить данные с первого сервера');
         }
-
         console.log('Data from the first server:', firstData);
-
-        // Используем полученные данные для запроса ко второму серверу
         let secondData = await fetchDataFromSecondServer(secondServerUrl, firstData);
-
         if (secondData) {
             console.log('Data from the second server:', secondData);
         } else {
@@ -58,6 +49,4 @@ async function main() {
         console.error('Ошибка:', error);
     }
 }
-
-// Запускаем основную функцию
 main();
